@@ -30,6 +30,7 @@ namespace FacultyApp.Repository
         {
             try
             {
+                Load();
                 StudentRepository.Instance.Load();
                 ExamRepository.Instance.Load();
                 ProfessorRepository.Instance.Load();
@@ -45,6 +46,10 @@ namespace FacultyApp.Repository
                     }
                     if (!_ers.Contains(er)) _ers.Add(er);
                     Save();
+                }
+                else
+                {
+                    throw new Exception("Student/Professor/Exam does not exist. Exam registration cannot be added!");
                 }
             } catch(Exception e)
             {
