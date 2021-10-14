@@ -1,0 +1,17 @@
+C:\Users\ANA\source\repos\FacultyApp\FacultyApp\bin\Debug\netcoreapp3.1\Domain.dll
+C:\Users\ANA\source\repos\FacultyApp\FacultyApp\obj\Debug\netcoreapp3.1\FacultyApp.csprojAssemblyReference.cache
+C:\Users\ANA\source\repos\FacultyApp\FacultyApp\obj\Debug\netcoreapp3.1\FacultyApp.AssemblyInfoInputs.cache
+C:\Users\ANA\source\repos\FacultyApp\FacultyApp\obj\Debug\netcoreapp3.1\FacultyApp.AssemblyInfo.cs
+C:\Users\ANA\source\repos\FacultyApp\FacultyApp\bin\Debug\netcoreapp3.1\FacultyApp.exe
+C:\Users\ANA\source\repos\FacultyApp\FacultyApp\bin\Debug\netcoreapp3.1\FacultyApp.deps.json
+C:\Users\ANA\source\repos\FacultyApp\FacultyApp\bin\Debug\netcoreapp3.1\FacultyApp.runtimeconfig.json
+C:\Users\ANA\source\repos\FacultyApp\FacultyApp\bin\Debug\netcoreapp3.1\FacultyApp.runtimeconfig.dev.json
+C:\Users\ANA\source\repos\FacultyApp\FacultyApp\bin\Debug\netcoreapp3.1\FacultyApp.dll
+C:\Users\ANA\source\repos\FacultyApp\FacultyApp\bin\Debug\netcoreapp3.1\FacultyApp.pdb
+C:\Users\ANA\source\repos\FacultyApp\FacultyApp\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\ANA\source\repos\FacultyApp\FacultyApp\bin\Debug\netcoreapp3.1\Domain.pdb
+C:\Users\ANA\source\repos\FacultyApp\FacultyApp\obj\Debug\netcoreapp3.1\FacultyApp.csproj.CoreCompileInputs.cache
+C:\Users\ANA\source\repos\FacultyApp\FacultyApp\obj\Debug\netcoreapp3.1\FacultyApp.csproj.CopyComplete
+C:\Users\ANA\source\repos\FacultyApp\FacultyApp\obj\Debug\netcoreapp3.1\FacultyApp.dll
+C:\Users\ANA\source\repos\FacultyApp\FacultyApp\obj\Debug\netcoreapp3.1\FacultyApp.pdb
+C:\Users\ANA\source\repos\FacultyApp\FacultyApp\obj\Debug\netcoreapp3.1\FacultyApp.genruntimeconfig.cache
