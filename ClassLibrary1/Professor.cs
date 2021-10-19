@@ -6,14 +6,23 @@ namespace Domain
 {
     public class Professor : Person
     {
-        public string Code { get; set; }
-        public Professor(string firstName, string lastName, string code) : base(firstName, lastName)
+        public string Id { get; set; }
+        public Professor(string firstName, string lastName, string id) : base(firstName, lastName)
         {
-            Code = code;
+            Id = id;
         }
         public override string ToString()
         {
-            return $"{FirstName} {LastName} {Code}";
+            return $"{FirstName} {LastName} {Id}";
+        }
+
+        public override bool Equals(object obj)
+        {
+           if(obj is Professor prof)
+            {
+                return Id.Equals(prof.Id);
+            }
+            return false;
         }
     }
 }

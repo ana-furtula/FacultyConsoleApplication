@@ -15,11 +15,10 @@ namespace Domain
 
         public ExamRegistration(string indeks, string examCode, DateTime date, int grade, string profCode)
         {
-            if (grade >= 5 && grade <= 10) Grade = grade;
-            else throw new Exception("Invalid grade!");
-            Regex rx = new Regex("[0-9]+/[0-9]+");
-            if (rx.IsMatch(indeks)) Indeks = indeks;
-            else throw new Exception("Index is not valid!");
+            Validation.GradeValidation(grade);
+            Validation.IndexValidation(indeks);
+            Indeks = indeks;
+            Grade = grade;
             ExamCode = examCode;
             Date = date;
             ProfCode = profCode; 
@@ -28,6 +27,15 @@ namespace Domain
         public override string ToString()
         {
             return $"{Indeks} {ExamCode} {Date.Date} {Grade} {ProfCode}";
+        }
+
+        public override bool Equals(object obj)
+        {
+            if(obj is ExamRegistration er)
+            {
+                return Indeks.Equals(er.Indeks) && ExamCode.Equals(er.ExamCode) && Date.Date == er.Date.Date;
+            }
+            return false;
         }
     }
 }

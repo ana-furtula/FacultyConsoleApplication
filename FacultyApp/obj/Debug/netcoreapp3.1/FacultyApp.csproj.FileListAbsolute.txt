@@ -15,3 +15,5 @@ C:\Users\ANA\source\repos\FacultyApp\FacultyApp\obj\Debug\netcoreapp3.1\FacultyA
 C:\Users\ANA\source\repos\FacultyApp\FacultyApp\obj\Debug\netcoreapp3.1\FacultyApp.dll
 C:\Users\ANA\source\repos\FacultyApp\FacultyApp\obj\Debug\netcoreapp3.1\FacultyApp.pdb
 C:\Users\ANA\source\repos\FacultyApp\FacultyApp\obj\Debug\netcoreapp3.1\FacultyApp.genruntimeconfig.cache
+C:\Users\ANA\source\repos\FacultyApp\FacultyApp\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\ANA\source\repos\FacultyApp\FacultyApp\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll

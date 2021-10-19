@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "OupRN6XCIK86pz+ajQEJ06IHf+wXRq8f3Gf5F6AE2NmsIPvaAxhnLZxsV0MQ9Q16CUMVmAxGSMC7BdrXieE3mg==",
+  "dgSpecHash": "4S88l9+rtcYORmjCEC0QaKqd6+AUjqoDhujaDPqrxDH5M9thIb7KKcpX6ltsKxTQoV29kSKEJi1sCUqyXEHYAQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\ANA\\source\\repos\\FacultyApp\\FacultyApp\\FacultyApp.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\ANA\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\5.0.2\\microsoft.extensions.dependencyinjection.5.0.2.nupkg.sha512",
+    "C:\\Users\\ANA\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\5.0.0\\microsoft.extensions.dependencyinjection.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\ANA\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
     "C:\\Users\\ANA\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.14\\microsoft.netcore.app.host.win-x64.3.1.14.nupkg.sha512"
   ],
