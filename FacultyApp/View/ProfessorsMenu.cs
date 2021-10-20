@@ -9,9 +9,14 @@ namespace FacultyApp.View
 {
     public class ProfessorsMenu
     {
-        public static void ShowMenu(IServiceProvider serviceProvider)
+        public ProfessorController ProfessorController { get; set; }
+        public ProfessorsMenu(ProfessorController professorController)
         {
-            var professorController = serviceProvider.GetRequiredService<ProfessorController>();
+            ProfessorController = professorController;
+        }
+
+        public void ShowMenu()
+        {
 
             int ans;
 
@@ -32,19 +37,19 @@ namespace FacultyApp.View
                         case 0:
                             break;
                         case 1:
-                            CreateProfessor(professorController);
+                            CreateProfessor();
                             break;
                         case 2:
-                            ReadProfessor(professorController);
+                            ReadProfessor();
                             break;
                         case 3:
-                            UpdateProfessor(professorController);
+                            UpdateProfessor();
                             break;
                         case 4:
-                            DeleteProfessor(professorController);
+                            DeleteProfessor();
                             break;
                         case 5:
-                            ReadAllProfessors(professorController);
+                            ReadAllProfessors();
                             break;
                         default:
                             Console.WriteLine("Bad request");
@@ -59,14 +64,16 @@ namespace FacultyApp.View
             } while (ans != 0);
         }
 
-        private static void DeleteProfessor(ProfessorController professorController)
+        private void DeleteProfessor()
         {
-            Console.WriteLine("Enter ID: ");
-            string id = Console.ReadLine();
+            Console.WriteLine("Enter jmbg: ");
+            string jmbg = Console.ReadLine();
+
             Console.WriteLine();
+
             try
             {
-                professorController.DeleteProfessor(id);
+                ProfessorController.DeleteProfessor(jmbg);
             }
             catch (Exception e)
             {
@@ -74,16 +81,19 @@ namespace FacultyApp.View
             }
         }
 
-        private static void UpdateProfessor(ProfessorController professorController)
+        private void UpdateProfessor()
         {
-            Console.WriteLine("Enter ID: ");
-            string id = Console.ReadLine();
-            Console.WriteLine("Enter new ID: ");
-            string newId = Console.ReadLine();
+            Console.WriteLine("Enter JMBG: ");
+            string jmbg = Console.ReadLine();
+
+            Console.WriteLine("Enter new first name: ");
+            string newFirstName = Console.ReadLine();
+
             Console.WriteLine();
+
             try
             {
-                professorController.UpdateProfessor(id, newId);
+                ProfessorController.UpdateProfessor(jmbg, newFirstName);
             }
             catch (Exception e)
             {
@@ -92,15 +102,16 @@ namespace FacultyApp.View
 
         }
 
-        private static void ReadProfessor(ProfessorController professorController)
+        private void ReadProfessor()
         {
-            Console.WriteLine("Enter ID: ");
-            string id = Console.ReadLine();
+            Console.WriteLine("Enter JMBG: ");
+            string jmbg = Console.ReadLine();
+          
             Console.WriteLine();
 
             try
             {
-                Professor prof = professorController.FindProfessor(id);
+                Professor prof = ProfessorController.FindProfessor(jmbg);
 
                 if (prof != null) Console.WriteLine(prof.ToString());
                 else Console.WriteLine("Professor not found!");
@@ -112,17 +123,20 @@ namespace FacultyApp.View
             }
         }
 
-        private static void CreateProfessor(ProfessorController professorController)
+        private void CreateProfessor()
         {
             Console.WriteLine("Enter first name: ");
             string firstName = Console.ReadLine();
+
             Console.WriteLine("Enter last name: ");
             string lastName = Console.ReadLine();
-            Console.WriteLine("Enter ID: ");
-            string id = Console.ReadLine();
+
+            Console.WriteLine("Enter JMBG: ");
+            string jmbg = Console.ReadLine();
+
             try
             {
-                professorController.AddProfessor(firstName, lastName, id);
+                ProfessorController.AddProfessor(firstName, lastName, jmbg);
             }
             catch (Exception e)
             {
@@ -130,9 +144,9 @@ namespace FacultyApp.View
             }
         }
 
-        public static void ReadAllProfessors(ProfessorController professorController)
+        public void ReadAllProfessors()
         {
-            var profs = professorController.GetAllProfessors();
+            var profs = ProfessorController.GetAllProfessors();
 
             if (profs.Count == 0)
             {

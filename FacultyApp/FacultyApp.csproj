@@ -12,6 +12,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ClassLibrary1\Domain.csproj" />
+    <ProjectReference Include="..\InMemoryRepositoryServices\InMemoryRepositoryServices.csproj" />
+    <ProjectReference Include="..\RepositoryServices.Interfaces\RepositoryServices.Interfaces.csproj" />
+    <ProjectReference Include="..\SQLRepositoryServices\SQLRepositoryServices.csproj" />
   </ItemGroup>
 
 </Project>

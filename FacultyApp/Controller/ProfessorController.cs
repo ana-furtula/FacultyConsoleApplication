@@ -1,5 +1,5 @@
 ﻿using Domain;
-using FacultyApp.Model;
+using RepositoryServices.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -14,11 +14,11 @@ namespace FacultyApp.Controller
             ProfessorRepository = professorRepository;
         }
 
-        public void AddProfessor(string firstName, string lastName, string id)
+        public void AddProfessor(string firstName, string lastName, string jmbg)
         {
             try
             {
-                Professor prof = new Professor(firstName, lastName, id);
+                Professor prof = new Professor(firstName, lastName, jmbg);
                 ProfessorRepository.AddProfessor(prof);
             }
             catch (Exception e)
@@ -27,16 +27,16 @@ namespace FacultyApp.Controller
             }
         }
 
-        public Professor FindProfessor(string id)
+        public Professor FindProfessor(string jmbg)
         {
-            return ProfessorRepository.GetProfByCredentials(id);
+            return ProfessorRepository.GetProfByCredentials(jmbg);
         }
 
-        public void UpdateProfessor(string id, string newId)
+        public void UpdateProfessor(string jmbg, string newFirstName)
         {
             try
             {
-                ProfessorRepository.UpdateProfessor(id, newId);
+                ProfessorRepository.UpdateProfessor(jmbg, newFirstName);
             }
             catch (Exception e)
             {
@@ -44,11 +44,11 @@ namespace FacultyApp.Controller
             }
         }
 
-        public void DeleteProfessor(string id)
+        public void DeleteProfessor(string jmbg)
         {
             try
             {
-                ProfessorRepository.DeleteProfessor(id);
+                ProfessorRepository.DeleteProfessor(jmbg);
             }
             catch (Exception e)
             {

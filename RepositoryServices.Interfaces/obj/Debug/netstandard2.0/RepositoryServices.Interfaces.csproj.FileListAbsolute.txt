@@ -1,0 +1,12 @@
+C:\Users\ANA\source\repos\FacultyApp\RepositoryServices.Interfaces\bin\Debug\netstandard2.0\RepositoryServices.Interfaces.deps.json
+C:\Users\ANA\source\repos\FacultyApp\RepositoryServices.Interfaces\bin\Debug\netstandard2.0\RepositoryServices.Interfaces.dll
+C:\Users\ANA\source\repos\FacultyApp\RepositoryServices.Interfaces\bin\Debug\netstandard2.0\RepositoryServices.Interfaces.pdb
+C:\Users\ANA\source\repos\FacultyApp\RepositoryServices.Interfaces\bin\Debug\netstandard2.0\Domain.dll
+C:\Users\ANA\source\repos\FacultyApp\RepositoryServices.Interfaces\bin\Debug\netstandard2.0\Domain.pdb
+C:\Users\ANA\source\repos\FacultyApp\RepositoryServices.Interfaces\obj\Debug\netstandard2.0\RepositoryServices.Interfaces.csprojAssemblyReference.cache
+C:\Users\ANA\source\repos\FacultyApp\RepositoryServices.Interfaces\obj\Debug\netstandard2.0\RepositoryServices.Interfaces.AssemblyInfoInputs.cache
+C:\Users\ANA\source\repos\FacultyApp\RepositoryServices.Interfaces\obj\Debug\netstandard2.0\RepositoryServices.Interfaces.AssemblyInfo.cs
+C:\Users\ANA\source\repos\FacultyApp\RepositoryServices.Interfaces\obj\Debug\netstandard2.0\RepositoryServices.Interfaces.csproj.CoreCompileInputs.cache
+C:\Users\ANA\source\repos\FacultyApp\RepositoryServices.Interfaces\obj\Debug\netstandard2.0\RepositoryServices.Interfaces.csproj.CopyComplete
+C:\Users\ANA\source\repos\FacultyApp\RepositoryServices.Interfaces\obj\Debug\netstandard2.0\RepositoryServices.Interfaces.dll
+C:\Users\ANA\source\repos\FacultyApp\RepositoryServices.Interfaces\obj\Debug\netstandard2.0\RepositoryServices.Interfaces.pdb

@@ -1,5 +1,4 @@
 ﻿using FacultyApp.Controller;
-using FacultyApp.Model;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -9,11 +8,8 @@ namespace FacultyApp.View
 {
     public class Menu
     {
-        private static IServiceProvider serviceProvider { get; set; }
-        public static void showMenu()
+        public static void ShowMenu(IServiceProvider serviceProvider)
         {
-            serviceProvider = CreateServiceProvider();
-
             bool ind;
             int ans;
             do
@@ -23,7 +19,7 @@ namespace FacultyApp.View
                 Console.WriteLine("2. Professors");
                 Console.WriteLine("3. Subjects");
                 Console.WriteLine("4. Exam registrations");
-                ind = Int32.TryParse(Console.ReadLine(), out ans);
+                ind = int.TryParse(Console.ReadLine(), out ans);
                 if (ind)
                 {
                     Console.WriteLine();
@@ -32,16 +28,20 @@ namespace FacultyApp.View
                         case 0:
                             break;
                         case 1:
-                            StudentsMenu.ShowMenu(serviceProvider);
+                            var studentsMenu = serviceProvider.GetRequiredService<StudentsMenu>();
+                            studentsMenu.ShowMenu();
                             break;
                         case 2:
-                            ProfessorsMenu.ShowMenu(serviceProvider);
+                            var professorsMenu = serviceProvider.GetRequiredService<ProfessorsMenu>();
+                            professorsMenu.ShowMenu();
                             break;
                          case 3:
-                            SubjectMenu.ShowMenu(serviceProvider);
+                            var subjectsMenu = serviceProvider.GetRequiredService<SubjectsMenu>();
+                            subjectsMenu.ShowMenu();
                              break;
                          case 4:
-                            ExamRegistrationMenu.ShowMenu(serviceProvider);
+                            var examRegistrationMenu = serviceProvider.GetRequiredService<ExamRegistrationMenu>();
+                            examRegistrationMenu.ShowMenu();
                             break;       
                         default:
                             Console.WriteLine("Bad request");
@@ -55,26 +55,6 @@ namespace FacultyApp.View
                 }
             } while (ans != 0);
         }
-
-        private static IServiceProvider CreateServiceProvider()
-        {
-            var services = new ServiceCollection();
-
-            services.AddSingleton<IStudentRepository, InMemoryStudentRepository>();
-            services.AddTransient<StudentController, StudentController>();
-
-            services.AddSingleton<IProfessorRepository, InMemoryProfessorRepository>();
-            services.AddTransient<ProfessorController, ProfessorController>();
-
-            services.AddSingleton<ISubjectRepository, InMemorySubjectRepository>();
-            services.AddTransient<SubjectController, SubjectController>();
-
-            services.AddSingleton<IExamRegistrationRepository, InMemoryExamRegistrationRepository>();
-            services.AddTransient<ExamRegistrationController, ExamRegistrationController>();
-
-            return services.BuildServiceProvider();
-        }
-
     }
 
 }

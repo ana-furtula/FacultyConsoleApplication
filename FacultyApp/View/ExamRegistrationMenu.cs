@@ -9,9 +9,23 @@ namespace FacultyApp.View
 {
     public class ExamRegistrationMenu
     {
-        public static void ShowMenu(IServiceProvider serviceProvider)
-        { 
-            var examRegistrationController = serviceProvider.GetRequiredService<ExamRegistrationController>();
+        public ExamRegistrationController ExamRegistrationController { get; set; }
+        public StudentController StudentController { get; set; }
+        public ProfessorController ProfessorController { get; set; }
+        public SubjectController SubjectController { get; set; }
+
+        public ExamRegistrationMenu(ExamRegistrationController examRegistrationController, StudentController studentController,
+            ProfessorController professorController, SubjectController subjectController)
+        {
+            ExamRegistrationController = examRegistrationController;
+            StudentController = studentController;
+            ProfessorController = professorController;
+            SubjectController = subjectController;
+        }
+
+        public void ShowMenu()
+        {
+
             int ans;
             do
             {
@@ -31,22 +45,19 @@ namespace FacultyApp.View
                         case 0:
                             break;
                         case 1:
-                            var studentController = serviceProvider.GetRequiredService<StudentController>();
-                            var professorController = serviceProvider.GetRequiredService<ProfessorController>();
-                            var subjectController = serviceProvider.GetRequiredService<SubjectController>();
-                            CreateExamRegistration(studentController, professorController, subjectController, examRegistrationController);
+                            CreateExamRegistration();
                             break;
                         case 2:
-                            ReadExamRegistration(examRegistrationController);
+                            ReadExamRegistration();
                             break;
                         case 3:
-                            UpdateExamRegistration(examRegistrationController);
+                            UpdateExamRegistration();
                             break;
                         case 4:
-                            DeleteExamRegistration(examRegistrationController);
+                            DeleteExamRegistration();
                             break;
                         case 5:
-                            ReadAllExamRegistrations(examRegistrationController);
+                            ReadAllExamRegistrations();
                             break;
                         default:
                             Console.WriteLine("Bad request");
@@ -59,60 +70,60 @@ namespace FacultyApp.View
                     ans = -1;
                 }
             } while (ans != 0);
-            
+
         }
 
-        private static void UpdateExamRegistration(ExamRegistrationController examRegistrationController)
+        private void UpdateExamRegistration()
         {
             Console.WriteLine("Enter index: ");
             string index = Console.ReadLine();
-            Console.WriteLine("Enter subjectId: ");
-            string subjectId = Console.ReadLine();
+
+            Console.WriteLine("Enter subject name: ");
+            string subjectName = Console.ReadLine();
+
+            var subject = SubjectController.FindSubject(subjectName);
+
+            if (subject == null)
+            {
+                Console.WriteLine("Invalid subject");
+                return;
+            }
+
             Console.WriteLine("Enter date (1/1/2021) : ");
             DateTime date;
             bool ind = DateTime.TryParse(Console.ReadLine(), out date);
+
             if (!ind)
             {
                 Console.WriteLine("Invalid date input.");
                 return;
             }
-            Console.WriteLine("Enter new grade: ");
-            int newGrade;
-            ind = Int32.TryParse(Console.ReadLine(), out newGrade);
+
+            Console.WriteLine("Enter grade: ");
+            int grade;
+            ind = Int32.TryParse(Console.ReadLine(), out grade);
             if (!ind)
             {
                 Console.WriteLine("Invalid grade input.");
                 return;
             }
-            Console.WriteLine();
-            try
-            {
-                examRegistrationController.UpdateExamRegistration(index, subjectId, date, newGrade);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-        }
 
-        private static void DeleteExamRegistration(ExamRegistrationController examRegistrationController)
-        {
-            Console.WriteLine("Enter index: ");
-            string index = Console.ReadLine();
-            Console.WriteLine("Enter subject ID: ");
-            string subjectId = Console.ReadLine();
-            Console.WriteLine("Enter date (1/1/2021) : ");
-            DateTime date;
-            bool ind = DateTime.TryParse(Console.ReadLine(), out date);
-            if (!ind)
+            Console.WriteLine("Enter professor's jmbg: ");
+            string profJmbg = Console.ReadLine();
+
+            var prof = ProfessorController.FindProfessor(profJmbg);
+
+            if (prof == null)
             {
-                Console.WriteLine("Invalid date input.");
+                Console.WriteLine("Invalid professor input");
                 return;
             }
+
             Console.WriteLine();
+
             try
             {
-                examRegistrationController.DeleteExamRegistration(index, subjectId, date);
+                ExamRegistrationController.UpdateExamRegistration(index, subject.Id, date, grade, prof.Id);
             }
             catch (Exception e)
             {
@@ -120,12 +131,12 @@ namespace FacultyApp.View
             }
         }
 
-        private static void ReadExamRegistration(ExamRegistrationController examRegistrationController)
+        private void DeleteExamRegistration()
         {
             Console.WriteLine("Enter index: ");
             string index = Console.ReadLine();
-            Console.WriteLine("Enter subjectId: ");
-            string subjectId = Console.ReadLine();
+            Console.WriteLine("Enter subject name: ");
+            string subjectName = Console.ReadLine();
             Console.WriteLine("Enter date (1/1/2021) : ");
             DateTime date;
             bool ind = DateTime.TryParse(Console.ReadLine(), out date);
@@ -136,16 +147,54 @@ namespace FacultyApp.View
             }
             Console.WriteLine();
 
-            ExamRegistration examRegistration = examRegistrationController.FindExamRegistration(index, subjectId, date);
+            var subject = SubjectController.FindSubject(subjectName);
+            if (subject == null) Console.WriteLine("Invalid subject");
 
-            if (examRegistration != null) Console.WriteLine(examRegistration.ToString());
-            else Console.WriteLine("Exam registration not found!");
+            try
+            {
+                ExamRegistrationController.DeleteExamRegistration(index, subject.Id, date);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+        private void ReadExamRegistration()
+        {
+            Console.WriteLine("Enter index: ");
+            string index = Console.ReadLine();
+
+            Console.WriteLine("Enter subject name: ");
+            string subjectName = Console.ReadLine();
+
+            Console.WriteLine("Enter date (1/1/2021) : ");
+            DateTime date;
+            bool ind = DateTime.TryParse(Console.ReadLine(), out date);
+            if (!ind)
+            {
+                Console.WriteLine("Invalid date input.");
+                return;
+            }
+
+            Console.WriteLine();
+
+            var subject = SubjectController.FindSubject(subjectName);
+            if (subject == null) Console.WriteLine("Invalid subject");
+
+            ExamRegistration examRegistration = ExamRegistrationController.FindExamRegistration(index, subject.Id, date);
+
+            if (examRegistration != null) 
+                Console.WriteLine(examRegistration.ToString());
+            else 
+                Console.WriteLine("Exam registration not found!");
+
             Console.WriteLine();
         }
 
-        private static void ReadAllExamRegistrations(ExamRegistrationController examRegistrationController)
+        private void ReadAllExamRegistrations()
         {
-            var ers = examRegistrationController.GetAllExamRegistrations();
+            var ers = ExamRegistrationController.GetAllExamRegistrations();
 
             if (ers.Count == 0)
             {
@@ -158,15 +207,33 @@ namespace FacultyApp.View
             {
                 Console.WriteLine(er);
             }
+
             Console.WriteLine();
         }
 
-        private static void CreateExamRegistration(StudentController studentController, ProfessorController professorController, SubjectController subjectController, ExamRegistrationController examRegistrationController)
+        private void CreateExamRegistration()
         {
+
             Console.WriteLine("Enter index: ");
             string index = Console.ReadLine();
-            Console.WriteLine("Enter exam ID: ");
-            string examId = Console.ReadLine();
+
+            var student = StudentController.FindStudent(index);
+            if (student == null)
+            {
+                Console.WriteLine("Invalid index input");
+                return;
+            }
+
+            Console.WriteLine("Enter subject name: ");
+            string subjectName = Console.ReadLine();
+
+            var subject = SubjectController.FindSubject(subjectName);
+            if (subject == null)
+            {
+                Console.WriteLine("Invalid subject input");
+                return;
+            }
+
             Console.WriteLine("Enter date (1/1/2021) : ");
             DateTime date;
             bool ind = DateTime.TryParse(Console.ReadLine(), out date);
@@ -175,7 +242,8 @@ namespace FacultyApp.View
                 Console.WriteLine("Invalid date input.");
                 return;
             }
-            Console.WriteLine("Enter grade: ");
+
+           /* Console.WriteLine("Enter grade: ");
             int grade;
             ind = Int32.TryParse(Console.ReadLine(), out grade);
             if (!ind)
@@ -183,11 +251,14 @@ namespace FacultyApp.View
                 Console.WriteLine("Invalid grade input.");
                 return;
             }
-            Console.WriteLine("Enter professor ID: ");
-            string profId = Console.ReadLine();
+            Console.WriteLine("Enter professor first name: ");
+            string profFirstName = Console.ReadLine();
+            Console.WriteLine("Enter professor last name: ");
+            string profLastName = Console.ReadLine();*/
+
             try
             {
-                examRegistrationController.AddExamRegistration(index, examId, date, grade, profId, studentController, professorController, subjectController);
+                ExamRegistrationController.AddExamRegistration(student.Indeks, subject.Id, date);
             }
             catch (Exception e)
             {

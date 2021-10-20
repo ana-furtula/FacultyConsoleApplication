@@ -1,5 +1,5 @@
 ﻿using Domain;
-using FacultyApp.Model;
+using RepositoryServices.Interfaces;
 using System;
 using System.Collections.Generic;
 
@@ -12,11 +12,11 @@ namespace FacultyApp.Controller
             SubjectRepository = subjectRepository;
         }
 
-        public void AddSubject(string id, string name, int espb)
+        public void AddSubject(string name, int espb, int semester)
         {
             try
             {
-                Subject subject = new Subject(id, name, espb);
+                Subject subject = new Subject(name, espb, semester);
                 SubjectRepository.Add(subject);
             }
             catch (Exception e)
@@ -25,16 +25,16 @@ namespace FacultyApp.Controller
             }
         }
 
-        public Subject FindSubject(string id)
+        public Subject FindSubject(string name)
         {
-            return SubjectRepository.GetSubjectByCredentials(id);
+            return SubjectRepository.GetSubjectByCredentials(name);
         }
 
-        public void UpdateSubject(string id, string newId)
+        public void UpdateSubject(string name, string newName)
         {
             try
             {
-                SubjectRepository.Update(id, newId);
+                SubjectRepository.Update(name, newName);
             }
             catch (Exception e)
             {
@@ -42,11 +42,11 @@ namespace FacultyApp.Controller
             }
         }
 
-        public void DeleteSubject(string id)
+        public void DeleteSubject(string name)
         {
             try
             {
-                SubjectRepository.Delete(id);
+                SubjectRepository.Delete(name);
             }
             catch (Exception e)
             {

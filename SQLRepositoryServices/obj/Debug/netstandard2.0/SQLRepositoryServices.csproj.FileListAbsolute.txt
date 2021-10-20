@@ -1,0 +1,14 @@
+C:\Users\ANA\source\repos\FacultyApp\SQLRepositoryServices\bin\Debug\netstandard2.0\SQLRepositoryServices.deps.json
+C:\Users\ANA\source\repos\FacultyApp\SQLRepositoryServices\bin\Debug\netstandard2.0\SQLRepositoryServices.dll
+C:\Users\ANA\source\repos\FacultyApp\SQLRepositoryServices\bin\Debug\netstandard2.0\SQLRepositoryServices.pdb
+C:\Users\ANA\source\repos\FacultyApp\SQLRepositoryServices\bin\Debug\netstandard2.0\Domain.dll
+C:\Users\ANA\source\repos\FacultyApp\SQLRepositoryServices\bin\Debug\netstandard2.0\RepositoryServices.Interfaces.dll
+C:\Users\ANA\source\repos\FacultyApp\SQLRepositoryServices\bin\Debug\netstandard2.0\Domain.pdb
+C:\Users\ANA\source\repos\FacultyApp\SQLRepositoryServices\bin\Debug\netstandard2.0\RepositoryServices.Interfaces.pdb
+C:\Users\ANA\source\repos\FacultyApp\SQLRepositoryServices\obj\Debug\netstandard2.0\SQLRepositoryServices.csprojAssemblyReference.cache
+C:\Users\ANA\source\repos\FacultyApp\SQLRepositoryServices\obj\Debug\netstandard2.0\SQLRepositoryServices.AssemblyInfoInputs.cache
+C:\Users\ANA\source\repos\FacultyApp\SQLRepositoryServices\obj\Debug\netstandard2.0\SQLRepositoryServices.AssemblyInfo.cs
+C:\Users\ANA\source\repos\FacultyApp\SQLRepositoryServices\obj\Debug\netstandard2.0\SQLRepositoryServices.csproj.CoreCompileInputs.cache
+C:\Users\ANA\source\repos\FacultyApp\SQLRepositoryServices\obj\Debug\netstandard2.0\SQLRepositoryServices.csproj.CopyComplete
+C:\Users\ANA\source\repos\FacultyApp\SQLRepositoryServices\obj\Debug\netstandard2.0\SQLRepositoryServices.dll
+C:\Users\ANA\source\repos\FacultyApp\SQLRepositoryServices\obj\Debug\netstandard2.0\SQLRepositoryServices.pdb

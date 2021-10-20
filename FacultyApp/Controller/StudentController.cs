@@ -1,5 +1,5 @@
 ﻿using Domain;
-using FacultyApp.Model;
+using RepositoryServices.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,11 +13,11 @@ namespace FacultyApp.Controller
             StudentRepository = studentRepository;
         }
 
-        public void AddStudent(string firstName, string lastName, string index)
+        public void AddStudent(string firstName, string lastName, string index, string jmbg)
         {
             try
             {
-                Student student = new Student(firstName, lastName, index);
+                Student student = new Student(firstName, lastName, index, jmbg);
                 StudentRepository.AddStudent(student);
             }
             catch (Exception e)
@@ -28,18 +28,23 @@ namespace FacultyApp.Controller
 
         public Student FindStudent(string index)
         {
-            Validation.IndexValidation(index);
+            if(!Validation.IndexValidation(index))
+                throw new Exception("Invalid index format!");
+
             return StudentRepository.GetStudentByIndex(index);
         }
 
-        public void UpdateStudent(string oldIndex, string newIndex)
+        public void UpdateStudent(string index, string newFirstName)
         {
-            Validation.IndexValidation(oldIndex);
-            Validation.IndexValidation(newIndex);
+            if(!Validation.IndexValidation(index))
+                throw new Exception("Invalid index format");
+
+            if (!Validation.NameValidation(newFirstName))
+                throw new Exception("Invalid first name.");
 
             try
             {
-                StudentRepository.UpdateStudent(oldIndex, newIndex);
+                StudentRepository.UpdateStudent(index, newFirstName);
             }
             catch (Exception e)
             {

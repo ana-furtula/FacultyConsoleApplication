@@ -1,0 +1,14 @@
+C:\Users\ANA\source\repos\FacultyApp\InMemoryRepositoryServices\bin\Debug\netstandard2.0\InMemoryRepositoryServices.deps.json
+C:\Users\ANA\source\repos\FacultyApp\InMemoryRepositoryServices\bin\Debug\netstandard2.0\InMemoryRepositoryServices.dll
+C:\Users\ANA\source\repos\FacultyApp\InMemoryRepositoryServices\bin\Debug\netstandard2.0\InMemoryRepositoryServices.pdb
+C:\Users\ANA\source\repos\FacultyApp\InMemoryRepositoryServices\bin\Debug\netstandard2.0\Domain.dll
+C:\Users\ANA\source\repos\FacultyApp\InMemoryRepositoryServices\bin\Debug\netstandard2.0\RepositoryServices.Interfaces.dll
+C:\Users\ANA\source\repos\FacultyApp\InMemoryRepositoryServices\bin\Debug\netstandard2.0\RepositoryServices.Interfaces.pdb
+C:\Users\ANA\source\repos\FacultyApp\InMemoryRepositoryServices\bin\Debug\netstandard2.0\Domain.pdb
+C:\Users\ANA\source\repos\FacultyApp\InMemoryRepositoryServices\obj\Debug\netstandard2.0\InMemoryRepositoryServices.csprojAssemblyReference.cache
+C:\Users\ANA\source\repos\FacultyApp\InMemoryRepositoryServices\obj\Debug\netstandard2.0\InMemoryRepositoryServices.AssemblyInfoInputs.cache
+C:\Users\ANA\source\repos\FacultyApp\InMemoryRepositoryServices\obj\Debug\netstandard2.0\InMemoryRepositoryServices.AssemblyInfo.cs
+C:\Users\ANA\source\repos\FacultyApp\InMemoryRepositoryServices\obj\Debug\netstandard2.0\InMemoryRepositoryServices.csproj.CoreCompileInputs.cache
+C:\Users\ANA\source\repos\FacultyApp\InMemoryRepositoryServices\obj\Debug\netstandard2.0\InMemoryRepositoryServices.csproj.CopyComplete
+C:\Users\ANA\source\repos\FacultyApp\InMemoryRepositoryServices\obj\Debug\netstandard2.0\InMemoryRepositoryServices.dll
+C:\Users\ANA\source\repos\FacultyApp\InMemoryRepositoryServices\obj\Debug\netstandard2.0\InMemoryRepositoryServices.pdb

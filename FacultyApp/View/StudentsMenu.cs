@@ -9,10 +9,15 @@ namespace FacultyApp.View
 {
     public class StudentsMenu
     {
-        public static void ShowMenu(IServiceProvider serviceProvider)
-        {
-            var studentController = serviceProvider.GetRequiredService<StudentController>();
+        public StudentController StudentController { get; set; }
 
+        public StudentsMenu(StudentController studentController)
+        {
+            StudentController = studentController;
+        }
+
+        public void ShowMenu()
+        {
             int ans;
             bool ind;
             do
@@ -33,19 +38,19 @@ namespace FacultyApp.View
                         case 0:
                             break;
                         case 1:
-                            CreateStudent(studentController);
+                            CreateStudent();
                             break;
                         case 2:
-                            ReadStudent(studentController);
+                            ReadStudent();
                             break;
                         case 3:
-                            UpdateStudent(studentController);
+                            UpdateStudent();
                             break;
                         case 4:
-                            DeleteStudent(studentController);
+                            DeleteStudent();
                             break;
                         case 5:
-                            ReadAllStudents(studentController);
+                            ReadAllStudents();
                             break;
                         default:
                             Console.WriteLine("Bad request");
@@ -60,18 +65,23 @@ namespace FacultyApp.View
             } while (ans != 0);
         }
 
-        static void CreateStudent(StudentController studentController)
+        private void CreateStudent()
         {
             try
             {
                 Console.WriteLine("Enter first name: ");
                 string firstName = Console.ReadLine();
+
                 Console.WriteLine("Enter last name: ");
                 string lastName = Console.ReadLine();
+
                 Console.WriteLine("Enter index: ");
                 string index = Console.ReadLine();
 
-                studentController.AddStudent(firstName, lastName, index);
+                Console.WriteLine("Enter JMBG: ");
+                string jmbg = Console.ReadLine();
+
+                StudentController.AddStudent(firstName, lastName, index, jmbg);
 
             }
             catch (Exception e)
@@ -80,14 +90,15 @@ namespace FacultyApp.View
             }
         }
 
-        static void ReadStudent(StudentController studentController)
+        private void ReadStudent()
         {
             Console.WriteLine("Enter index: ");
             string indeks = Console.ReadLine();
             Console.WriteLine();
+
             try
             {
-                Student s = studentController.FindStudent(indeks);
+                Student s = StudentController.FindStudent(indeks);
                 if (s != null) Console.WriteLine(s.ToString());
                 else Console.WriteLine("Student not found!");
                 Console.WriteLine();
@@ -98,17 +109,17 @@ namespace FacultyApp.View
             }
         }
 
-        static void UpdateStudent(StudentController studentController)
+        private void UpdateStudent()
         {
-            Console.WriteLine("Enter old index: ");
-            string oldIndex = Console.ReadLine();
-            Console.WriteLine("Enter new index: ");
-            string newIndex = Console.ReadLine();
+            Console.WriteLine("Enter index: ");
+            string index = Console.ReadLine();
+            Console.WriteLine("Enter new first name: ");
+            string newFirstName = Console.ReadLine();
             Console.WriteLine();
 
             try
             {
-                studentController.UpdateStudent(oldIndex, newIndex);
+                StudentController.UpdateStudent(index, newFirstName);
             }
             catch (Exception e)
             {
@@ -117,7 +128,7 @@ namespace FacultyApp.View
 
         }
 
-        static void DeleteStudent(StudentController studentController)
+        private void DeleteStudent()
         {
             Console.WriteLine("Enter index: ");
             string index = Console.ReadLine();
@@ -125,7 +136,7 @@ namespace FacultyApp.View
 
             try
             {
-                studentController.DeleteStudent(index);
+                StudentController.DeleteStudent(index);
             }
             catch (Exception e)
             {
@@ -133,9 +144,9 @@ namespace FacultyApp.View
             }
         }
 
-        static void ReadAllStudents(StudentController studentController)
+        private void ReadAllStudents()
         {
-            var students = studentController.GetAllStudents();
+            var students = StudentController.GetAllStudents();
 
             if (students.Count == 0)
             {

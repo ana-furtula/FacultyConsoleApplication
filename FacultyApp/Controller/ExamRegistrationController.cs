@@ -1,55 +1,47 @@
 ﻿using Domain;
-using FacultyApp.Model;
+using RepositoryServices.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace FacultyApp.Controller
 {
-    class ExamRegistrationController
+    public class ExamRegistrationController
     {
         public ExamRegistrationController(IExamRegistrationRepository examRegistrationRepository)
         {
             ExamRegistrationRepository = examRegistrationRepository;
         }
 
-        public void AddExamRegistration(string index, string subjectId, DateTime date, int grade, string profId,
-            StudentController studentController, ProfessorController professorController,
-            SubjectController subjectController)
+        public void AddExamRegistration(string index, Guid subjectId, DateTime date)
         {
 
-            if (studentController.FindStudent(index) != null && subjectController.FindSubject(subjectId) != null && professorController.FindProfessor(profId) != null)
+            ExamRegistration er = new ExamRegistration(index, subjectId, date, null, null);
+            try
             {
-                ExamRegistration er = new ExamRegistration(index, subjectId, date, grade, profId);
-                try
-                {
-                    ExamRegistrationRepository.Add(er);
-                }
-                catch (Exception e)
-                {
-                    throw e;
-                }
+                ExamRegistrationRepository.Add(er);
             }
-            else
+            catch (Exception e)
             {
-                throw new Exception("Invalid input");
+                throw e;
             }
-
         }
+
+
 
         public List<ExamRegistration> GetAllExamRegistrations()
         {
             return ExamRegistrationRepository.GetAll();
         }
 
-        public ExamRegistration FindExamRegistration(string index, string subjectId, DateTime date)
+        public ExamRegistration FindExamRegistration(string index, Guid subjectId, DateTime date)
         {
 
             return ExamRegistrationRepository.GetERByCredentials(index, subjectId, date);
 
         }
 
-        public void DeleteExamRegistration(string index, string subjectId, DateTime date)
+        public void DeleteExamRegistration(string index, Guid subjectId, DateTime date)
         {
             try
             {
@@ -61,11 +53,11 @@ namespace FacultyApp.Controller
             }
         }
 
-        public void UpdateExamRegistration(string index, string subjectId, DateTime date, int newGrade)
+        public void UpdateExamRegistration(string index, Guid subjectId, DateTime date, int grade, Guid profId)
         {
             try
             {
-                ExamRegistrationRepository.Update(index, subjectId, date, newGrade);
+                ExamRegistrationRepository.Update(index, subjectId, date, grade, profId);
             }
             catch (Exception e)
             {

@@ -6,14 +6,17 @@ namespace Domain
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
-      
-        public Person(string firstName, string lastName)
+        public string JMBG { get; set; }
+
+        public Person(string firstName, string lastName, string jmbg)
         {
-            Validation.NameValidation(firstName);
-            Validation.NameValidation(lastName);
+            if(!Validation.NameValidation(firstName)) throw new Exception("Invalid first name.");
+            if(!Validation.NameValidation(lastName)) throw new Exception("Invalid last name.");
+            if (!Validation.JMBGValidation(jmbg)) throw new Exception("Invalid JMBG");
 
             FirstName = firstName;
             LastName = lastName;
+            JMBG = jmbg;
         }
 
     }
